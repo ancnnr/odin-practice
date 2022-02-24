@@ -1,47 +1,47 @@
 function playRound(playerVal, compVal) {
-  if(playerVal == "R")
+  if(playerVal == "rock")
   {
-    if(compVal == "Rock")
+    if(compVal == "comprock")
     {
-      return "Tie Game! Rock vs. Rock.";
+      return ["tie",compVal,"Tie Game! Rock vs. Rock."];
     }
-    else if (compVal == "Paper")
+    else if (compVal == "comppaper")
     {
-      return "Computer Wins. Paper Beats Rock";
+      return ["comp",compVal,"Computer Wins. Paper Beats Rock"];
     }
     else {
-      return "Player Wins, Rock beats Scissors";
+      return ["player",compVal,"Player Wins, Rock beats Scissors"];
     }
   }
 
-  else if(playerVal == "P")
+  else if(playerVal == "paper")
   {
-    if(compVal == "Rock")
+    if(compVal == "comprock")
     {
-      return "Player Wins! Paper beats Rock!";
+      return ["player",compVal,"Player Wins! Paper beats Rock!"];
     }
-    else if (compVal == "Paper")
+    else if (compVal == "comppaper")
     {
-      return "Tie Game. Paper vs. Paper!";
+      return ["tie",compVal,"Tie Game. Paper vs. Paper!"];
     }
     else {
-      return "Computer Wins! Scissors cut Paper";
+      return ["comp",compVal,"Computer Wins! Scissors cut Paper"];
     }
   }
 
   else {
-    if(compVal == "Rock")
+    if(compVal == "comprock")
     {
-      return "Computer Wins! Rock crushes Paper";
+      return ["comp",compVal,"Computer Wins! Rock crushes Paper"];
     }
 
-    else if(compVal == "Paper")
+    else if(compVal == "comppaper")
     {
-      return "Player Wins! Scissors cut Paper";
+      return ["player",compVal,"Player Wins! Scissors cut Paper"];
     }
 
     else {
-      return "Tie Game! Scissors vs. Scissors";
+      return ["tie",compVal,"Tie Game! Scissors vs. Scissors"];
     }
   }
 }
@@ -63,20 +63,43 @@ function getCompVal()
   let compRand = parseInt(Math.random()*3);
   if(compRand==0)
   {
-    return "Rock";
+    return "comprock";
   }
 
   else if(compRand==1)
   {
-    return "Paper";
+    return "comppaper";
   }
 
   else {
-    return "Scissors";
+    return "compscissors";
   }
 }
 
 function playRPS()
 {
-  console.log(playRound(getPlayVal(), getCompVal()));
+  let el = document.getElementById(event.target.id);
+  el.style.backgroundColor = "red";
+
+  //Play the game round
+  let result = playRound(event.target.id, getCompVal())
+
+  let comp_el = document.getElementById(result[1]);
+  
+  comp_el.style.visibility="visible";
+  console.log(result[2]);
+
+
+  //timer of some sort
+
+
+  //Reset the game
+  window.setTimeout(resetGame, 3000, el, comp_el);
+  
+}
+
+function resetGame(player, comp)
+{
+  player.style.backgroundColor="#4284f5";
+  comp.style.visibility="hidden";
 }
