@@ -5,9 +5,23 @@ body {
 * {
     color: white;
 }
-
+.player_score, .comp_score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 .header {
     height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10vw;
+}
+
+.header p {
+    font-size: 36px;
+    text-shadow: 0 0 15px #FF0000;
 }
 
 .footer {
@@ -18,9 +32,9 @@ body {
 }
 
 .rps-main img {
-    width: 25%;
+    width: 100%;
     height: auto;
-    min-width: 300px;
+    min-width: 85px;
     padding: 0;
     border-radius: 50%;
     background-color: #4284f5;
@@ -32,10 +46,16 @@ body {
     border-radius: 50%;
 }
 
+
+.winner {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+}
+
 .rps-comp img {
-    width: 25%;
+    width: 100%;
     height: auto;
-    min-width: 300px;
     padding: 0;
     border-radius: 50%;
     background-color: #e6fa84;
@@ -70,10 +90,11 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
+    gap: 5%;
+    flex-wrap:nowrap;
     padding-top: 30px;
     padding-bottom: 30px;
+    min-width: 0;
 }
 
 .rps-comp {

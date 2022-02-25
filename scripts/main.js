@@ -1,3 +1,6 @@
+let player_score = 0;
+let comp_score = 0;
+
 function playRound(playerVal, compVal) {
   if(playerVal == "rock")
   {
@@ -89,12 +92,29 @@ function playRPS()
   comp_el.style.visibility="visible";
   console.log(result[2]);
 
+  document.querySelector('.rps-main').childNodes.forEach(function(e) {
+    e.onclick='';
+  })
 
-  //timer of some sort
+  //print winner
+  document.querySelector('.winner').textContent=result[2];
 
+  //increment score variables
+  if(result[0]=='player')
+  {
+    player_score++;
+  }
+
+  else if(result[0]=='comp')
+  {
+    comp_score++;
+  }
+  
+  document.querySelector('#playerwins').textContent=player_score;
+  document.querySelector('#compwins').textContent=comp_score;
 
   //Reset the game
-  window.setTimeout(resetGame, 3000, el, comp_el);
+  window.setTimeout(resetGame, 4000, el, comp_el);
   
 }
 
@@ -102,4 +122,8 @@ function resetGame(player, comp)
 {
   player.style.backgroundColor="#4284f5";
   comp.style.visibility="hidden";
+  document.querySelector('.winner').textContent='';
+  document.querySelector('.rps-main').childNodes.forEach(function(e) {
+    e.onclick=playRPS;
+  })
 }
