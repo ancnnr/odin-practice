@@ -1,6 +1,15 @@
+/*
+Main.js --> All core JS for the Rock Paper Scissors Game
+Author: Adam Conner
+Date: Feb, 2022
+*/
+
+
+//score variables
 let player_score = 0;
 let comp_score = 0;
 
+//playRound() --> Takes str for playerVal and string for compVal and returns an array: [winner, comp pick, string result statement]
 function playRound(playerVal, compVal) {
   if(playerVal == "rock")
   {
@@ -49,18 +58,8 @@ function playRound(playerVal, compVal) {
   }
 }
 
-function getPlayVal()
-{
-  let userVal = "";
 
-  while(userVal != "R" && userVal != "P" && userVal != "S")
-  {
-    userVal = prompt("Enter (R)ock, (P)aper or (S)cissors: ");
-  }
-  
-  return userVal;
-}
-
+//getCompVal() --> uses a quick random to pick which play the comp will make and returns an appropriatre string value
 function getCompVal()
 {
   let compRand = parseInt(Math.random()*3);
@@ -79,22 +78,25 @@ function getCompVal()
   }
 }
 
+
+//playRPS() --> Core game function to manipulate the DOM and play game
 function playRPS()
 {
-  let el = document.getElementById(event.target.id);
+  //grab clicked element
+  let el = document.getElementById(event.target.id); 
   el.style.backgroundColor = "red";
 
-  //Play the game round
+  //Get the result of the game round
   let result = playRound(event.target.id, getCompVal())
 
+  //make comp icon visible my moving it to the visible div rps-main
   let comp_el = document.getElementById(result[1]);
-  
-  comp_el.style.visibility="visible";
-  console.log(result[2]);
+  document.querySelector('.rps-comp').append(comp_el); 
 
+  //loop through and disable on-click for all of the buttons until the timer event is over
   document.querySelector('.rps-main').childNodes.forEach(function(e) {
     e.onclick='';
-  })
+  })  
 
   //print winner
   document.querySelector('.winner').textContent=result[2];
@@ -109,7 +111,7 @@ function playRPS()
   {
     comp_score++;
   }
-  
+
   document.querySelector('#playerwins').textContent=player_score;
   document.querySelector('#compwins').textContent=comp_score;
 
@@ -118,10 +120,11 @@ function playRPS()
   
 }
 
+//resetGame() --> Sets everything bcak to where it was and re-enables onclick methods
 function resetGame(player, comp)
 {
   player.style.backgroundColor="#4284f5";
-  comp.style.visibility="hidden";
+  document.querySelector('.rps-comp-hidden').appendChild(comp);
   document.querySelector('.winner').textContent='';
   document.querySelector('.rps-main').childNodes.forEach(function(e) {
     e.onclick=playRPS;

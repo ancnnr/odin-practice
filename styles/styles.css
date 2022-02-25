@@ -1,16 +1,31 @@
+* {
+    color: white;
+}
+
 body {
    background-color: black;
 }
 
-* {
-    color: white;
+.site-container {
+    display: flex;
+    justify-content: center;
 }
+
+.main-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 auto;
+}
+
 .player_score, .comp_score {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 10px;
 }
+
 .header {
     height: 100px;
     display: flex;
@@ -24,11 +39,15 @@ body {
     text-shadow: 0 0 15px #FF0000;
 }
 
-.footer {
-    height: 100px;
-}
-.footer img {
-    visibility: hidden;
+.rps-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    flex-wrap:nowrap;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    min-width: 0;
 }
 
 .rps-main img {
@@ -46,11 +65,14 @@ body {
     border-radius: 50%;
 }
 
-
-.winner {
-    font-size: 36px;
-    font-weight: 800;
-    text-align: center;
+.rps-comp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .rps-comp img {
@@ -61,48 +83,19 @@ body {
     background-color: #e6fa84;
 }
 
-#comprock {
+.rps-comp-hidden {
     visibility: hidden;
 }
 
-#comppaper {
+.winner {
+    font-size: 36px;
+    font-weight: 800;
+    text-align: center;
+}
+
+.footer {
+    height: 100px;
+}
+.footer img {
     visibility: hidden;
-}
-
-#compscissors {
-    visibility: hidden;
-}
-
-.site-container {
-    display: flex;
-    justify-content: center;
-}
-
-.main-column {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex: 1 1 auto;
-}
-
-.rps-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5%;
-    flex-wrap:nowrap;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    min-width: 0;
-}
-
-.rps-comp {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    flex-wrap: wrap;
-    padding-top: 30px;
-    padding-bottom: 30px;
 }
